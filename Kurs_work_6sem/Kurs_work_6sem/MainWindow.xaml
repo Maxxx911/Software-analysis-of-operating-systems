@@ -1,0 +1,49 @@
+﻿<Window x:Class="Kurs_work_6sem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kurs_work_6sem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.2*" ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="1" Grid.Row="3" Height="40px" Width="90px" ></Button>
+        <ListBox Name="PCList" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Характеристика Пк" />
+            <ListBoxItem Background="LightGray">Операционная система (номер версии): </ListBoxItem>
+            <ListBoxItem>Разрядность процессора:</ListBoxItem>
+            <ListBoxItem Background="LightGray">Модель процессора:</ListBoxItem>
+            <ListBoxItem>Путь к системному каталогу:</ListBoxItem>
+            <ListBoxItem Background="LightGray">Число процессоров:</ListBoxItem>
+            <ListBoxItem>Имя пользователя:</ListBoxItem>
+            <ListBoxItem>Дальше еще про диски вывести Хочется как дерево</ListBoxItem>
+            </ListBox>
+        <ListBox Name="NetworkList" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Характеристика Пк" />
+            <ListBoxItem>Предусмотреть для нескольких подключений сети и вывод внешнего Ip</ListBoxItem>
+            <ListBoxItem Background="LightGray">Сеть:</ListBoxItem>
+            <ListBoxItem>Ipv4 адрес</ListBoxItem>
+
+            <ListBoxItem Background="LightGray">Ipv6 адрес:</ListBoxItem>
+            <ListBoxItem>SSID:</ListBoxItem>
+            <ListBoxItem Background="LightGray">Число процессоров:</ListBoxItem>
+            <ListBoxItem>Имя пользователя:</ListBoxItem>
+            
+        </ListBox>
+    </Grid>
+</Window>
