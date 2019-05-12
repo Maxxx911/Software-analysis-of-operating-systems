@@ -30,6 +30,12 @@ namespace Kurs_work_6sem
             InitializeComponent();
             PcProcessorView.DataContext = SystemInfo;
             VideoCard1View.DataContext = SystemInfo.VideoCard[0];
+            VideoCard2View.DataContext = SystemInfo.VideoCard[1];
+            SystemInfo.NetworkInfo = NetworkStatus.Show();
+            NetworCardkView.DataContext = SystemInfo.NetworkInfo;
+            SystemInfo.DisksInfo = DiskStatus.Show();
+            Disc1CardView.DataContext = SystemInfo.DisksInfo[0];
+            Disc2CardView.DataContext = SystemInfo.DisksInfo[1];
             //PCList.DataContext = SystemInfo;
         }
 
@@ -46,6 +52,10 @@ namespace Kurs_work_6sem
         private void ListBoxItemPCViewShow(object sender, RoutedEventArgs e)
         {
 
+            PcView.Visibility = Visibility.Visible;
+            DiscView.Visibility = Visibility.Hidden;
+            LisboxPCItem.IsSelected = true;
+
         }
         private void ListBoxItemDiskViewShow(object sender, RoutedEventArgs e)
         {
@@ -53,7 +63,19 @@ namespace Kurs_work_6sem
         }
         private void ListBoxItemNetworkViewShow(object sender, RoutedEventArgs e)
         {
+            PcView.Visibility = Visibility.Hidden;
+            DiscView.Visibility = Visibility.Visible;
+            LisboxDiscItem.IsSelected = true;
+        }
 
+        private void Person_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Создано Максимом Спасёновым для курсовой работы по ОСИС 2019\nКарта для доната: 4344-8434-2064-3322","Об авторе");
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Текущая программа позволяет просматривать основные характеристики компьютера, для начала работы нужно запустить программу, что вы уже сделали;)", "О программе");
         }
     }
 }

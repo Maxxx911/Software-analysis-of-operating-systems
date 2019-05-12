@@ -75,19 +75,6 @@ namespace Kurs_work_6sem
             AddFieldToVideoCard(res, card1, card2, "VideoSize");
             MainWindow.SystemInfo.VideoCard.Add(card1);
             MainWindow.SystemInfo.VideoCard.Add(card2);
-
-
-            foreach (DriveInfo dI in DriveInfo.GetDrives())
-            {
-                MainWindow.SystemInfo.DisksInfo.Add(
-                    new Models.DiskInfo
-                    {
-                        DiskName = Convert.ToString(dI.Name),
-                        DiskFormat = Convert.ToString(dI.DriveFormat),
-                        DiskSize = Convert.ToDouble(dI.TotalSize / 1024 / 1024 / 1024),
-                        DiskAvailableFreeSpace = Convert.ToDouble(dI.AvailableFreeSpace / 1024 / 1024 / 1024),
-                    });
-            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Kurs_work_6sem.Models
         public int ProcessorCount { get; set; }
         public string UserName { get; set; }
         public List<DiskInfo> DisksInfo = new List<DiskInfo>();
-        public List<VideoCardInfo> VideoCard = new List<VideoCardInfo>(); 
+        public List<VideoCardInfo> VideoCard = new List<VideoCardInfo>();
+        public NetworkInfo NetworkInfo = new NetworkInfo();
     }
 }

@@ -21,10 +21,10 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="GirdHeader" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="#FF252525" MouseDown="GirdHeader_MouseDown">
             <StackPanel Margin="0,0,10,0" Orientation="Horizontal" HorizontalAlignment="Right" >
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"  Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" >
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"  Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="About_Click" >
                     <materialDesign:PackIcon Kind="InfoOutline"></materialDesign:PackIcon>
                 </Button>
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"  Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" >
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"  Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Person_Click" >
                     <materialDesign:PackIcon Kind="Person"></materialDesign:PackIcon>
                 </Button>
                 <Button x:Name="button_Power" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"  Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Power_Click" >
@@ -34,9 +34,14 @@
         </Grid>
         <Grid  x:Name="LeftMenu" Grid.Column="0" Grid.Row="1">
             <ListBox Background="#FF302D2D" >
-                <ListBoxItem Margin="0,15,0,10"  Foreground="White" FontSize="20px" IsSelected="True" Background="#FF424242"  >Pc</ListBoxItem>
-                <ListBoxItem Margin="0,0,0,10"  Foreground="White" FontSize="20px" Background="#FF424242" >Disk</ListBoxItem>
-                <ListBoxItem Margin="0,0,0,10" Foreground="White" FontSize="20px" Background="#FF424242">Network</ListBoxItem>
+                <ListBoxItem x:Name="LisboxPCItem" Margin="0,15,0,10"  Foreground="White" FontSize="20px" Background="#FF424242" Selector.IsSelected="True">
+                    <Button Width="190" Height="38" Background="#FF424242" BorderBrush="#FF424242" Click="ListBoxItemPCViewShow">PC
+                    </Button>
+                </ListBoxItem>
+                <ListBoxItem x:Name="LisboxDiscItem" Margin="0,0,0,10" Foreground="White" FontSize="20px" Background="#FF424242" Selector.IsSelected="False">
+                    <Button Width="190" Height="38" Background="#FF424242" BorderBrush="#FF424242" Click="ListBoxItemNetworkViewShow" >Disc
+                    </Button>
+                </ListBoxItem>
             </ListBox>
         </Grid>
         <Grid x:Name="PcView" Grid.Row="1" Grid.Column="1" >
@@ -71,7 +76,7 @@
                 <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=ProcessorModel}" Grid.Column="1" Grid.Row="2" FontSize="13"></TextBlock>
                 <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="3" FontSize="12" >Число процессоров:</TextBlock>
                 <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=ProcessorCount}" Grid.Column="1" Grid.Row="3" FontSize="13"></TextBlock>
-                
+
             </Grid>
             <Rectangle Grid.Column="1" Grid.Row="0" Margin="15" Fill="#FF484848" RadiusX="10" RadiusY="10" />
             <Grid x:Name="VideoCard1View" Grid.Column="1" Grid.Row="0" Margin="15">
@@ -97,39 +102,104 @@
                 <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=VideoSize}" Grid.Column="1" Grid.Row="3" FontSize="13"></TextBlock>
 
             </Grid>
+            <Rectangle Grid.Column="1" Grid.Row="1" Margin="15" Fill="#FF484848" RadiusX="10" RadiusY="10" />
+            <Grid x:Name="VideoCard2View" Grid.Column="1" Grid.Row="1" Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Foreground="White" Margin="5,10,0,0" Grid.Column="0" Grid.Row="0" FontSize="12" >Видеокарта</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,10,0,0" Text="{Binding Path=VideoName}" Grid.Column="1" Grid.Row="0" FontSize="14"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="1" FontSize="12" >Видеопроцессор:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=VideoType}" FontSize="14" Grid.Column="1" Grid.Row="1"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="2" FontSize="12" >Версия драйвера:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=VideoVersion}" Grid.Column="1" Grid.Row="2" FontSize="13"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="3" FontSize="12" >Объём памяти:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=VideoSize}" Grid.Column="1" Grid.Row="3" FontSize="13"></TextBlock>
+
+            </Grid>
+            <Rectangle Grid.Column="0" Grid.Row="1" Margin="15" Fill="#FF484848" RadiusX="10" RadiusY="10" />
+            <Grid x:Name="NetworCardkView" Grid.Column="0" Grid.Row="1" Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Foreground="White" Margin="5,10,0,0" Grid.Column="0" Grid.Row="0" FontSize="12" >IPv4 адрес:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,10,0,0" Text="{Binding Path=IPv4Adress}" Grid.Column="1" Grid.Row="0" FontSize="14"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="1" FontSize="12" >IPv6 адрес:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=IPv6Adress}" FontSize="14" Grid.Column="1" Grid.Row="1"></TextBlock>
+            </Grid>
         </Grid>
-
-        <!--<Button Grid.Column="1" Grid.Row="3" Height="40px" Width="90px" >123</Button>
-        <materialDesign:Card  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
-            <StackPanel Name="PCList" >
-                <TextBlock Margin="0,10,0,0" FontWeight="Bold" TextDecorations="Underline" Text="Характеристика Пк" />
-                <TextBlock Margin="0,10,0,0" Background="LightGray">Операционная система (номер версии)</TextBlock>
-                <TextBlock Text="{Binding Path=OSVersion}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" >Разрядность процессора:</TextBlock>
-                <TextBlock Text="{Binding Path=ProcessorArchitecture}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Background="LightGray">Модель процессора:</TextBlock>
-                <TextBlock Text="{Binding Path=ProcessorModel}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" >Путь к системному каталогу:</TextBlock>
-                <TextBlock Text="{Binding Path=SystemDirectory}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Background="LightGray">Число процессоров:</TextBlock>
-                <TextBlock Text="{Binding Path=ProcessorCount}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" >Имя пользователя:</TextBlock>
-                <TextBlock Text="{Binding Path=UserName}"></TextBlock>
-                <TextBlock>Дальше еще про диски вывести Хочется как дерево</TextBlock>
-            </StackPanel>
-        </materialDesign:Card>-->
-
-        <!--<ListBox Name="NetworkList" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" >
-            <TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Характеристика Пк" />
-            <ListBoxItem>Предусмотреть для нескольких подключений сети и вывод внешнего Ip</ListBoxItem>
-            <ListBoxItem Background="LightGray">Сеть:</ListBoxItem>
-            <ListBoxItem>Ipv4 адрес</ListBoxItem>
-
-            <ListBoxItem Background="LightGray">Ipv6 адрес:</ListBoxItem>
-            <ListBoxItem>SSID:</ListBoxItem>
-            <ListBoxItem Background="LightGray">Число процессоров:</ListBoxItem>
-            <ListBoxItem>Имя пользователя:</ListBoxItem>
-
-        </ListBox>-->
+        <Grid x:Name="DiscView" Grid.Row="1" Grid.Column="1" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Grid.Row="0" Margin="15" Fill="#FF484848" RadiusX="10" RadiusY="10" />
+            <Grid x:Name="Disc1CardView" Grid.Column="0" Grid.Row="0" Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="White" Margin="5,10,0,0" Grid.Column="0" Grid.Row="0" FontSize="12" >Диск:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,10,0,0" Text="{Binding Path=DiskName}" Grid.Column="1" Grid.Row="0" FontSize="14"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="1" FontSize="12" >Формат:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=DiskFormat}" FontSize="14" Grid.Column="1" Grid.Row="1"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="2" FontSize="12" >Общее место на диске(Гб):</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=DiskSize}" Grid.Column="1" Grid.Row="2" FontSize="13"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="3" FontSize="12" >Свободно на диске(Гб):</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=DiskAvailableFreeSpace}" Grid.Column="1" Grid.Row="3" FontSize="13"></TextBlock>
+            </Grid>
+            <Rectangle Grid.Column="1" Grid.Row="0" Margin="15" Fill="#FF484848" RadiusX="10" RadiusY="10" />
+            <Grid x:Name="Disc2CardView" Grid.Column="1" Grid.Row="0" Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="White" Margin="5,10,0,0" Grid.Column="0" Grid.Row="0" FontSize="12" >Диск:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,10,0,0" Text="{Binding Path=DiskName}" Grid.Column="1" Grid.Row="0" FontSize="14"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="1" FontSize="12" >Формат:</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=DiskFormat}" FontSize="14" Grid.Column="1" Grid.Row="1"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="2" FontSize="12" >Общее место на диске(Гб):</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=DiskSize}" Grid.Column="1" Grid.Row="2" FontSize="13"></TextBlock>
+                <TextBlock Foreground="White" Margin="5,5,0,0" Grid.Column="0" Grid.Row="3" FontSize="12" >Свободно на диске(Гб):</TextBlock>
+                <TextBlock  Foreground="White" Margin="10,5,0,0" Text="{Binding Path=DiskAvailableFreeSpace}" Grid.Column="1" Grid.Row="3" FontSize="13"></TextBlock>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
