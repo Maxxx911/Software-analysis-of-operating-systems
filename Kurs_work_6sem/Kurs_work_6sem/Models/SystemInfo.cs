@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Kurs_work_6sem.Models
 {
-    public class SystemInfo
+    public class SystemInfo:  INotifyPropertyChanged
     {
         public string OSVersion { get; set; }
         public string ProcessorArchitecture { get; set; }
@@ -13,5 +14,13 @@ namespace Kurs_work_6sem.Models
         public List<DiskInfo> DisksInfo = new List<DiskInfo>();
         public List<VideoCardInfo> VideoCard = new List<VideoCardInfo>();
         public NetworkInfo NetworkInfo = new NetworkInfo();
+
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
